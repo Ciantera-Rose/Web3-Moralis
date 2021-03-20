@@ -1,0 +1,64 @@
+<!-- 
+    1) AUTHENTICATE WITH METAMASK
+    2) ADD USER TO DB
+    3) ADD MORE DATA TO THE USER PROFILE
+
+    >> serverless 
+ -->
+
+
+ <!DOCTYPE html>
+ <html lang='en'>
+ <head>
+  <meta chharset='UTF-8'>
+  <title>Metamask Demo</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://npmcdn.com/moralis@0.0.6/dist/moralis.js"></script>
+  
+ <head>
+ <body>
+
+    <button onClick="login()">Login with Metamask</button>
+
+    <script>
+        // authenticate with server 
+        Moralis.initialize("4gKZuaXnijg8hDca3aY7fVJstyLE8k3SBgZSiqZg"); // Application id from moralis.io
+		Moralis.serverURL = "https://zikntczwunwl.moralis.io:2053/server"; //Server url from moralis.io
+
+        async function login() {
+            console.log("login clicked");
+            var user = await Moralis.Web3.authenticate();
+            if(user){
+                console.log(user);
+                user.set("nickname","CIAN");
+                user.set("fav_color","purple");
+                user.save();
+            }
+        }
+    </script>
+
+<!-- 
+    ParseUser {id: "6Uaqt7qBHP", _objCount: 0, className: "_User"}
+className: "_User"
+id: "6Uaqt7qBHP"
+_objCount: 0
+attributes: (...)
+createdAt: (...)
+updatedAt: (...)
+__proto__: ParseObject
+ -->
+
+ <!-- 
+     ParseUser {id: "6Uaqt7qBHP", _objCount: 2, className: "_User"}
+className: "_User"
+id: "6Uaqt7qBHP"
+_objCount: 2
+attributes: (...)
+createdAt: (...)
+updatedAt: (...)
+__proto__: ParseObject
+  -->
+   
+ </body>
+ </html>
