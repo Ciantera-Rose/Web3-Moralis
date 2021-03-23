@@ -1,5 +1,5 @@
-Moralis.initialize('INSERT_APP_ID'); // Application id from moralis.io
-Moralis.serverURL = 'INSERT_SERVER_URL'; //Server url from moralis.io
+Moralis.initialize('4iezTaZ5edEHwcAYpuD9lCXcKJt3vUR8YdUJgsBH'); // Application id from moralis.io
+Moralis.serverURL = 'https://6achco4k6mvv.moralis.io:2053/server'; //Server url from moralis.io
 
 async function login() {
   try {
@@ -11,4 +11,14 @@ async function login() {
   }
 }
 
+async function flip(side) {
+  alert(side);
+}
+
 document.getElementById('login_button').onclick = login;
+document.getElementById('heads_button').onclick = function () {
+  flip('heads');
+};
+document.getElementById('tails_button').onclick = function () {
+  flip('tails');
+};
