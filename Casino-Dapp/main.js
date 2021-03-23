@@ -3,9 +3,15 @@ Moralis.serverURL = 'https://6achco4k6mvv.moralis.io:2053/server'; //Server url 
 
 async function login() {
   try {
-    user = await Moralis.Web3.authenticate();
+    user = await Moralis.User.current();
+    if (!user) {
+      user = await Moralis.Web3.authenticate();
+    }
+
     console.log(user);
     alert('User logged in');
+    document.getElementById('login_button').style.display = 'none';
+    document.getElementById('game').style.display = 'block';
   } catch (error) {
     console.log(error);
   }
